@@ -1,5 +1,5 @@
 // const express = require("express");
-import express from 'express';
+import express, { Request, Response, NextFunction, RequestHandler } from 'express';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -61,6 +61,23 @@ app.delete('/users', (req, res) => {
   users = users.filter((user) => (user.id !== id));
   res.json(users);
 })
+
+const isAuthorized = (req: Request, res: Response, next: NextFunction) => {
+  const authHeader = req.headers.authorization;
+  if (authHeader === process.env.API_KEY) {
+    next();
+  } else {
+    res.status(401);
+    res.json({ msg: 'Access Denied!' });
+  }
+}
+
+// GET a specific user
+app.get("/users/:id", isAuthorized,(req, res) => {
+  const id = +req.params.id;
+  const user = users.filter(user => user.id === id)[0];
+  user ? res.json(user) : res.send("User not found!");
+});
 
 // start
 app.listen(port, () => {
