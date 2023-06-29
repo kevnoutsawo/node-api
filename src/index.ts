@@ -1,4 +1,3 @@
-// const express = require("express");
 import express, { Request, Response, NextFunction, RequestHandler } from 'express';
 import dotenv from 'dotenv';
 
@@ -7,10 +6,10 @@ const app = express();
 const port = process.env.PORT;
 app.use(express.json());
 
-// routes
-// app.get("/", (req, res) => {
-//   res.send("Hello from my API");
-// });
+// Routes
+app.get("/", (req, res) => {
+  res.send("Hello from my API");
+});
 
 // Data source
 let users = [
