@@ -1,6 +1,3 @@
-Sure! Here's a README file for your Node/Express API project:
-
-
 # Node/Express API Demo
 
 This is a simple Node.js and Express.js API project that provides basic CRUD operations for managing users. It uses JSON data to store and manipulate user information from an in-memory array.
@@ -159,3 +156,8 @@ Note: The API requires authorization to access the `GET /users/:id` endpoint. Th
 ## Authorization
 
 The API uses a simple API key for authorization. The API key should be included in the `Authorization` header of the request. If the provided API key matches the one stored in the server's environment variables, the request will be authorized. Otherwise, a `401 Unauthorized` response
+
+## Live Demo
+
+URL : node-api-production-ddce.up.railway.app
+API KEY : demo
